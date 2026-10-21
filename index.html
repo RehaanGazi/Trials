@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a101b">
+  <meta name="description" content="Offline Web Designing Concepts theory preparation across six course files.">
+  <title>WDC // Study Lab · Full Syllabus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="WDC Study Lab home"><span class="brand-mark">W<span class="brand-dot">.</span></span><span class="brand-label"><b>WDC</b><small>STUDY LAB / 01</small></span></a>
+      <div class="sidebar-heading">WORKSPACE</div>
+      <nav class="view-nav" aria-label="Main navigation">
+        <button class="nav-item selected" data-view="study"><span class="nav-icon">✦</span> Study sessions <span class="nav-arrow">↗</span></button>
+        <button class="nav-item" data-view="library"><span class="nav-icon">▤</span> Question bank <span id="navTotal" class="nav-count">354</span></button>
+        <button class="nav-item" data-view="exam"><span class="nav-icon">◷</span> Exam simulator</button>
+        <button class="nav-item" data-view="focused"><span class="nav-icon">◎</span> Focused mode <span class="focus-ready">READY</span></button>
+      </nav>
+      <div class="sidebar-heading mt-heading">COURSE UNITS</div>
+      <div id="unitNav" class="unit-nav"></div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="tiny-dot"></span><div><b>Offline by design</b><small>Your progress stays on this browser. No account or internet required.</small></div></div>
+        <button class="btn-side" id="exportBtn" title="Save your practice progress as a JSON file">↓ Export progress</button>
+        <label class="btn-side import-label">↑ Import progress <input type="file" id="importProgress" accept="application/json,.json" hidden></label>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb"><button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button><span>ACADEMIC OS</span><span class="crumb-sep">/</span><strong>WEB DESIGNING CONCEPTS</strong></div>
+        <div class="top-right"><span class="live-indicator"></span> LOCAL SESSION <span class="top-version">v2.0</span></div>
+      </header>
+      <section class="hero" id="hero">
+        <div class="hero-copy"><div class="eyebrow"><span class="hairline"></span> REVISION SYSTEM / COMPLETE + FOCUSED</div><h1>Know it. <em>Recall it.</em><br>Own the exam.</h1><p>Six course files. Every major topic. Now with a dedicated teacher-focused revision track.</p><div class="hero-actions"><button class="primary-btn" id="startStudy">Start studying <span>↗</span></button><button class="ghost-btn" id="heroFocus">Teacher focus mode <span>→</span></button></div></div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-1"></div><div class="orbit orbit-2"></div><div class="orbit orbit-3"></div><div class="code-cube"><span>W</span><i>/</i><b>DC</b></div><div class="floating-label fl-a">01 / UNDERSTAND</div><div class="floating-label fl-b">02 / RETRIEVE</div><div class="floating-label fl-c">03 / MASTER</div></div>
+      </section>
+      <section class="stats-grid" aria-label="Syllabus progress">
+        <article class="stat"><div class="stat-label">TOTAL QUESTIONS <span>⌗</span></div><div class="stat-value" id="totalQuestions">354</div><div class="stat-meta">Across all 6 uploaded documents</div></article>
+        <article class="stat"><div class="stat-label">QUESTIONS ATTEMPTED <span>↗</span></div><div class="stat-value" id="seenQuestions">0 <small>/ 354</small></div><div class="stat-meter"><div id="seenBar"></div></div></article>
+        <article class="stat"><div class="stat-label">MASTERED <span>✳</span></div><div class="stat-value" id="masteredQuestions">0</div><div class="stat-meta">Marked “Easy / mastered”</div></article>
+        <article class="stat"><div class="stat-label">NEEDS REVISION <span>↺</span></div><div class="stat-value" id="weakQuestions">0</div><div class="stat-meta">Collect your weak spots here</div></article>
+      </section>
+      <div class="view" id="studyView">
+        <div class="section-title"><div><div class="eyebrow subtle">ACTIVE LEARNING</div><h2>Study session</h2><p>Try answering from memory first, then reveal the simple explanation.</p></div><div class="chip">THEORY FIRST</div></div>
+        <div class="study-layout">
+          <div class="study-main">
+            <div class="filterbar"><div class="filter-title">SESSION SETUP</div><div class="filter-controls"><label class="field"><span>TOPIC</span><select id="topicFilter" aria-label="Select topic"></select></label><label class="field"><span>SHOW</span><select id="scopeFilter" aria-label="Select question status"><option value="all">All questions</option><option value="unseen">Not attempted</option><option value="weak">Needs revision</option><option value="starred">Bookmarked</option><option value="due">Due for review</option></select></label><button class="shuffle-btn" id="shuffleBtn" aria-pressed="false">⇄ Shuffle off</button></div></div>
+            <div id="studyCard"></div>
+            <div class="study-nav"><button class="control-btn" id="prevBtn">← Previous</button><div class="keyboard-hint">Space <span>reveal</span> · 1 / 2 / 3 <span>rate</span> · ← → <span>navigate</span></div><button class="control-btn" id="nextBtn">Next question →</button></div>
+          </div>
+          <div class="study-rail"><div class="rail-head"><div class="eyebrow subtle">YOUR SYLLABUS</div><h3>Course map</h3><p>Choose a unit to practice just that material.</p></div><div id="unitCards" class="unit-cards"></div><div class="tip-card"><div class="tip-icon">✳</div><b>THE 10-SECOND RULE</b><p>If you can't explain the answer simply, reveal it, understand it, and press “Needs work”. That's how the tricky stuff sticks.</p></div></div>
+        </div>
+      </div>
+      <div class="view hidden" id="libraryView">
+        <div class="section-title"><div><div class="eyebrow subtle">BROWSE / REVISE</div><h2>Complete question bank</h2><p>All questions, organized by unit and topic. Search any word or source.</p></div><span class="chip" id="bankCount">354 QUESTIONS</span></div>
+        <div class="library-toolbar"><div class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search questions, answers, code, topics..." aria-label="Search question bank"></div><select id="libraryUnit" aria-label="Filter question bank by unit"></select><button class="control-btn" id="expandAll">Expand visible</button></div>
+        <div id="libraryResults" class="library-results"></div><div id="libraryFooter" class="library-footer"></div>
+      </div>
+      <div class="view hidden" id="examView">
+        <div class="section-title"><div><div class="eyebrow subtle">EXAM READINESS</div><h2>Mock theory paper</h2><p>Write your own answer, compare it with the model answer, then grade yourself.</p></div><span class="chip">SELF-EVALUATED</span></div>
+        <div id="examHost"></div>
+      </div>
+      <div class="view hidden" id="focusedView">
+        <div class="section-title"><div><div class="eyebrow subtle">TEACHER PRIORITIES / NEW</div><h2>Focused mode <span class="focus-highlight">◎</span></h2><p>Just the topics from your two handwritten pages, including theory, coding, debugging and output questions.</p></div><span class="chip focus-chip">TEACHER'S LIST</span></div>
+        <div class="focus-intro">
+          <div class="focus-intro-content"><span class="focus-kicker">PRECISION REVISION · PHASE 02</span><h3>Less guessing.<br><em>More exam-ready.</em></h3><p>These questions are hand-picked from your existing syllabus and extended with simple program-writing and output exercises. Answer first, then reveal and rate yourself.</p>
+           <div class="focus-actions"><button class="primary-btn" id="focusStart">Begin focused revision ↗</button><button class="ghost-btn" id="focusMock">Generate focused mock →</button></div>
+          </div>
+          <div class="focus-hero-stats"><div class="focus-large-num" id="focusAllCount">—</div><span>targeted questions</span><div class="focus-mini-stats"><div><b id="focusDone">0</b><span>Attempted</span></div><div><b id="focusMastered">0</b><span>Mastered</span></div></div><div class="focus-track"><div id="focusMeter"></div></div></div>
+        </div>
+        <div class="focus-summary-row"><div><strong id="focusSectionCount">20</strong><span>teacher topic groups</span></div><div><strong id="focusExtraCount">61</strong><span>new applied exercises</span></div><div><strong>2</strong><span>pages of teacher notes</span></div></div>
+        <div class="focus-two-column">
+          <section class="focus-practice" id="focusPracticeArea">
+            <div class="filterbar focus-filterbar"><div class="filter-title">TARGETED PRACTICE</div><div class="filter-controls"><label class="field"><span>TOPIC</span><select id="focusTopic" aria-label="Teacher topic filter"></select></label><label class="field"><span>SHOW</span><select id="focusStatus" aria-label="Focused review status"><option value="all">All questions</option><option value="unseen">Not attempted</option><option value="weak">Needs revision</option><option value="starred">Bookmarked</option></select></label><label class="field"><span>TYPE</span><select id="focusFormat" aria-label="Focused question type"><option value="all">All types</option><option value="theory">Theory / recall</option><option value="applied">Code / output</option></select></label></div></div>
+            <div id="focusCard"></div>
+            <div class="study-nav"><button class="control-btn" id="focusPrev">← Previous</button><span class="keyboard-hint">Space <span>reveal</span> · 1 / 2 / 3 <span>rate</span> · ← → <span>navigate</span></span><button class="control-btn" id="focusNext">Next →</button></div>
+            <div class="focus-paper-builder"><div><b>Practice like it's the paper.</b><p>Randomized long and short theory questions, output prediction, and code writing.</p></div><div class="focus-paper-controls"><label>Questions <select id="focusExamCount"><option value="10">10</option><option value="20" selected>20</option><option value="30">30</option><option value="40">40</option></select></label><button class="primary-btn" id="focusCreateExam">Start focused mock ↗</button></div></div>
+          </section>
+          <aside class="focus-rail">
+           <div class="focus-rail-heading"><span class="eyebrow subtle">FROM THE TEACHER'S NOTEBOOK</span><h3>Priority map</h3><p>Click a group to practise only that topic. Groups retain their own progress.</p></div>
+           <div class="focus-group-switch" id="focusGroups"><button class="active" data-fgroup="all">All</button><button data-fgroup="css">CSS</button><button data-fgroup="js">JavaScript</button><button data-fgroup="html">HTML</button></div>
+           <div id="focusTopicMap"></div>
+          </aside>
+        </div>
+        <div class="focus-bottom-grid">
+          <details class="focus-help"><summary><strong>Quick revision diagrams &amp; code templates</strong><span>OPEN REFERENCE ↓</span></summary><div class="focus-reference-grid">
+            <div class="focus-ref"><h4>CSS BOX MODEL</h4><div class="margin-demo"><b>MARGIN</b><div class="border-demo"><b>BORDER</b><div class="padding-demo"><b>PADDING</b><div class="content-demo">CONTENT</div></div></div></div></div>
+            <div class="focus-ref"><h4>CSS RULE STRUCTURE</h4><pre>p {                 /* selector */
+  color: red;       /* declaration */
+  text-align: center;
+}</pre><p><b>Selectors:</b> p · .class · #id<br><b>Methods:</b> inline · internal · external</p></div>
+            <div class="focus-ref"><h4>JS OUTPUT</h4><pre>&lt;p id="demo"&gt;&lt;/p&gt;
+&lt;script&gt;
+  document.getElementById("demo")
+    .innerHTML = "Hello";
+  console.log("Debug message");
+&lt;/script&gt;</pre><p><b>Remember:</b> innerHTML changes the page; console.log writes to developer tools.</p></div>
+            <div class="focus-ref"><h4>LOOP + SWITCH</h4><pre>for (let i = 1; i &lt;= 3; i++) {
+  console.log(i);
+}
+switch (choice) {
+  case 1: console.log("One"); break;
+  default: console.log("Other");
+}</pre></div>
+            <div class="focus-ref"><h4>HTML LIST + TABLE</h4><pre>&lt;ul&gt;&lt;li&gt;Apple&lt;/li&gt;&lt;/ul&gt;
+&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Ace&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre></div>
+          </div></details>
+          <details class="focus-help"><summary><strong>Transcription notes — what was uncertain?</strong><span>2 LINES NEED CONFIRMATION ↓</span></summary><p>The photos clearly cover CSS, JavaScript and HTML list/table coding. One line appears to mention writing a message in a paragraph, so that is covered under DOM output. Another short phrase resembles “paper flow,” but its precise meaning is unclear; no exam requirement has been invented from it. The “alphabet capital” line is covered with case-sensitive letters and converting a → A. Send clearer wording anytime to refine those topics.</p></details>
+        </div>
+      </div>
+      <footer class="site-footer"><span>WDC STUDY LAB © 2026 · FOCUSED MODE V2.0</span><span>354 QUESTIONS · 51 TOPICS · 6 SOURCE FILES</span></footer>
+    </main>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="questions.js"></script><script src="focused.js"></script><script src="app.js"></script>
+</body>
+</html>

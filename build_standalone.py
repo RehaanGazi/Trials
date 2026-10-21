@@ -1,0 +1,11 @@
+from pathlib import Path
+folder=Path('/mnt/data/WDC_Study_Lab')
+html=(folder/'index.html').read_text()
+css=(folder/'style.css').read_text()
+question_js=(folder/'questions.js').read_text().replace('</','<\\/')
+focused_js=(folder/'focused.js').read_text().replace('</','<\\/')
+app=(folder/'app.js').read_text()
+html=html.replace('<link rel="stylesheet" href="style.css">','<style>\n'+css+'\n</style>')
+html=html.replace('<script src="questions.js"></script><script src="focused.js"></script><script src="app.js"></script>','<script>\n'+question_js+'\n</script>\n<script>\n'+focused_js+'\n</script>\n<script>\n'+app+'\n</script>')
+(folder.parent/'WDC_Study_Lab.html').write_text(html,encoding='utf8')
+print('Single-file website:',folder.parent/'WDC_Study_Lab.html',len(html),'characters')
